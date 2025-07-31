@@ -11,12 +11,14 @@ import frc.robot.subsystems.DriveSubsystem;
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class ArcadeDriveCommand extends Command {
 
-  // TODO: Insert your class variables here...
+  private final DriveSubsystem m_drive;
+  private final CommandXboxController m_controller;
 
   /** Creates a new ArcadeDriveCommand. */
-  // TODO: Insert your consutrctor parameters
-  public ArcadeDriveCommand() {
-    // TODO: Insert your constructor code here...
+  public ArcadeDriveCommand(DriveSubsystem drive, CommandXboxController controller) {
+    m_drive = drive;
+    m_controller = controller;
+    addRequirements(m_drive);
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +29,9 @@ public class ArcadeDriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // TODO: Insert your command code here...
+    double fwd = -m_controller.getLeftY();
+    double rot = -m_controller.getRightX();
+    m_drive.arcadeDrive(fwd, rot);
   }
 
   // Called once the command ends or is interrupted.

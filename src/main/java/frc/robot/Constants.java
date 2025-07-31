@@ -21,7 +21,10 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
   }
 
-  // TODO: Insert DriveConstants here...
   public static class DriveConstants {
+    public static final int kLeftLeaderMotorPort = 1;
+    public static final int kLeftFollowerMotorPort = 2;
+    public static final int kRightLeaderMotorPort = 3;
+    public static final int kRightFollowerMotorPort = 4;
   }
 }
